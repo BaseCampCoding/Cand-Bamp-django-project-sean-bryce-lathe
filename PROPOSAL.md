@@ -13,8 +13,8 @@ There's so much blog post website that exist on the internet, but this website i
 
 ### Core User Workflows
 - Signup: The user will have an option to signup as a artist or a listener.
-- Artist: They should be able to create, edit and delete blog post about them.They can also listen to other artistes and also rate there albume and leave review or comments about their page. Also they can follow other Artistes.
-- Listenr: They will be able to like and comment on the artist's blog posts. Also they can follow the Artist.
+- Artist: They should be able to create, edit and delete blog posts, which may be just a text post, single, or album for streaming. They can also listen to other artists and also rate their album and leave reviews or comments about their page. Also they can follow other Artists.
+- Listener: They will be able to like and comment on the artist's blog posts. Also they can follow the Artist.
 - Artist's music will be featured on the featured page.
 
 ### How will you utilize the content covered this unit
