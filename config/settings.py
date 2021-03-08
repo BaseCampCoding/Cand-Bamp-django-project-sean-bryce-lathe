@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
     'cand-bamp',
     'accounts',
 ]
@@ -56,7 +57,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [str(BASE_DIR.joinpath('templates'))],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,4 +121,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+<<<<<<< HEAD
 AUTH_USER_MODEL = 'accounts.CustomUser'
+=======
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+>>>>>>> ca007aedf02cc7bca2fddc404a7ce6ee3d327fab
