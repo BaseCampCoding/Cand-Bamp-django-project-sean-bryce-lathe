@@ -17,6 +17,9 @@ There's so much blog post website that exist on the internet, but this website i
 - Listenr: They will be able to like and comment on the artist's blog posts. Also they can follow the Artist.
 - Artist's music will be featured on the featured page.
 
+### How will you utilize the content covered this unit
+Mostly all the content we have covered in this unit will be using in this project. A major roll in this unit project will be post song on a feed. That's probably the guss of this project and we'll add like comments and likes features toward the end. Using the admin to have control over the post.
+
 ### Daily Goals
  - Tuesday: Have a successful signup (creating the basic model, view, and form, plus admin features on these features.). Users should be able to make an account that is either a "listener" or "artist". Both user types have the same accessibility, but each role's ability has different names and emphasis for features. The artist, is essence, has one more ability the listener does not: The ability to post their music.
 
@@ -28,6 +31,7 @@ There's so much blog post website that exist on the internet, but this website i
 
  - Monday: Assess where we are in the project, finish what needs to be finished in last week's work. After this, we will start on the css and look of each template.
 
+ - Tuesday: We will work on getting music playing on the website. If we finish with our goal we'll try to add a follow goal.
 ### Students
 - Bryce
 - Lathe 
