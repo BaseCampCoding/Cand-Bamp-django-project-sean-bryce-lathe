@@ -22,6 +22,10 @@ There's so much blog post website that exist on the internet, but this website i
 
  - Thursday: We want to implement user authentication for the user and artist. Both roles have different layout.
 
+ - Friday: Listeners and Artists should be able to make their own page on the site, with a small description, their favorite artists, and favorite articles from our site.
+
+ - Monday: Assess where we are in the project, finish what needs to be finished in last week's work. After this, we will start on the css and look of each template.
+
 ### Students
 - Bryce
 - Lathe 
