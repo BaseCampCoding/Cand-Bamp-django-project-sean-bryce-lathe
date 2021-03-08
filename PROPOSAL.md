@@ -18,8 +18,9 @@ There's so much blog post website that exist on the internet, but this website i
  - Tuesday: Have a successful signup. Users should be able to make an account that is either a "listener" or 
  "artist". Both user types have the same accessibility, but each role's ability has different names for features.
 
- - Wednesday: Finish up previous work on signup, and begin the featured or home page. Featured page will have, at this point, artist 
- - Thursday: We want to implement user authentication for the user and artist. Both roles have different layout. 
+ - Wednesday: Finish up previous work on signup, and begin the featured or home page. Featured page will have, at this point, artist.
+
+ - Thursday: We want to implement user authentication for the user and artist. Both roles have different layout.
 
 ### Students
 - Bryce
