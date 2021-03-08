@@ -15,8 +15,10 @@ We wanted to create a space where artists could talk about and share their art. 
 - 
 
 ### Daily Goals
- - Tuesday:
- - Wednesday:
+ - Tuesday: Have a successful signup. Users should be able to make an account that is either a "listener" or 
+ "artist". Both user types have the same accessibility, but each role's ability has different names for features.
+
+ - Wednesday: Finish up previous work on signup, and begin the featured or home page. Featured page will have, at this point, artist 
  - Thursday: 
 
 ### Students
