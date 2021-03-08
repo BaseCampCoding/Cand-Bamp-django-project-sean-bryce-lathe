@@ -16,7 +16,7 @@ There's so much blog post website that exist on the internet, but this website i
 
 ### Daily Goals
  - Tuesday: Have a successful signup. Users should be able to make an account that is either a "listener" or 
- "artist". Both user types have the same accessibility, but each role's ability has different names for features.
+ "artist". Both user types have the same accessibility, but each role's ability has different names for features. The artist, is essence, has one more ability the listener does not: The ability to post their music.
 
  - Wednesday: Finish up previous work on signup, and begin the featured or home page. Featured page will have, at this point, artist.
 
