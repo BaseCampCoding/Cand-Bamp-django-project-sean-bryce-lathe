@@ -17,6 +17,7 @@ There's so much blog post website that exist on the internet, but this website i
 - Listenr: They will be able to like and comment on the artist's blog posts. Also they can follow the Artist.
 - Artist's music will be featured on the featured page.
 
+
 ### Daily Goals
  - Tuesday: Have a successful signup (creating the basic model, view, and form, plus admin features on these features.). Users should be able to make an account that is either a "listener" or "artist". Both user types have the same accessibility, but each role's ability has different names and emphasis for features. The artist, is essence, has one more ability the listener does not: The ability to post their music.
 
