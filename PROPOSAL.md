@@ -12,7 +12,10 @@ We wanted to create a space where artists could talk about and share their art. 
 There's so much blog post website that exist on the internet, but this website is built mostly for artists. The user view the artist post and like them. We want to built our own website to inspire artist to display their music to the platform.
 
 ### Core User Workflows
-- 
+- Signup: The user will have an option to signup as a artist or a listener.
+- Artist: They should be able to create, edit and delete blog post about them.
+- Listenr: They will be able to like and comment on the artist's blog posts.
+- Artist's music will be featured on the featured page.
 
 ### Daily Goals
  - Tuesday: Have a successful signup. Users should be able to make an account that is either a "listener" or 
