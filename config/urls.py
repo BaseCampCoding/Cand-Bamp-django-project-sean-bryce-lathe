@@ -18,4 +18,5 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("signup/", users.views.SignUpView.as_view(), name="signup"),
 ]
