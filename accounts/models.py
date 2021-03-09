@@ -3,22 +3,24 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django import forms
 
-ROLE_CHOICES= [
+
+# Create your models here.
+class User(AbstractUser):
+    ROLE_CHOICES= [
     ('listener', "Listener"),
     ('artist', "Artist"),
 ]
 
-GENRE_CHOICES = [
-    ('Rock', 'rock'),
-    ('Jazz', 'jazz'),
-    ('hip-hop', 'Hip-Hop'),
-    ('Blues', 'blues'),
-    ('Folk', 'folk'),
-    ('Country', 'country'),
-    ('Pop', 'pop'),
-]
-# Create your models here.
-class User(AbstractUser):
+    GENRE_CHOICES = [
+        ('Rock', 'rock'),
+        ('Jazz', 'jazz'),
+        ('hip-hop', 'Hip-Hop'),
+        ('Blues', 'blues'),
+        ('Folk', 'folk'),
+        ('Country', 'country'),
+        ('Pop', 'pop'),
+    ]
+    
     image = models.ImageField()
     roles = forms.CharField(max_length=8, choices=ROLE_CHOICES, default="Listener")
     genre = models.CharField(max_length=7, choices=GENRE_CHOICES, default="Pop")
