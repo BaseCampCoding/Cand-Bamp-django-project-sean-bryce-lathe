@@ -20,8 +20,8 @@ GENRE_CHOICES = [
 # Create your models here.
 class User(AbstractUser):
     image = models.ImageField()
-    roles = forms.CharField(label='What role would you like to be?', widget=forms.Select(choices=ROLE_CHOICES), default="Listener")
-    genre = models.CharField(label="What is your favorite genre?", widget=forms.Select(choices=GENRE_CHOICES), null=True)
+    roles = forms.CharField(max_length=8, choices=ROLE_CHOICES, default="Listener")
+    genre = models.CharField(max_length=7, choices=GENRE_CHOICES, default="Pop")
     about = models.TextField(max_length=500)
     
 
