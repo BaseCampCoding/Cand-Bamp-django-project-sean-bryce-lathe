@@ -1,12 +1,12 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .forms import UserCreationForm, UserChangeForm
-from .models import  CustomUser
+from .models import User
 # Register your models here.
 class UserAdmin(UserAdmin):
     add_form = UserCreationForm
     form = UserChangeForm
-    model = CustomUser
+    model = User
     list_display = ['username', 'first_name', 'last_name', 'email', 'password', 'genre', 'image', 'roles', 'about', 'is_staff',]
     fieldsets = UserAdmin.fieldsets + (
         (None, {'fields': ('genre', 'image', 'roles', 'about',)}),
@@ -15,4 +15,4 @@ class UserAdmin(UserAdmin):
         (None, {'fields': ('genre', 'image', 'roles', 'about',)}),
     )
 
-admin.site.register(CustomUser, UserAdmin)
+admin.site.register(User, UserAdmin)
