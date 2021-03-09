@@ -7,6 +7,16 @@ ROLE_CHOICES= [
     ('listener', 'Listener'),
     ('artist', 'Artist'),
 ]
+
+GENRE_CHOICES = [
+    ('Rock', 'rock'),
+    ('Jazz', 'jazz'),
+    ('hip-hop', 'Hip-Hop'),
+    ('Blues', 'blues'),
+    ('Folk', 'folk'),
+    ('Country', 'country'),
+    ('Pop', 'pop'),
+]
 # Create your models here.
 class User(AbstractUser):
     image = models.ImageField()
