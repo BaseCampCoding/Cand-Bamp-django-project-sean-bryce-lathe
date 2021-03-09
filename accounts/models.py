@@ -5,7 +5,7 @@ from django import forms
 
 
 # Create your models here.
-class User(AbstractUser):
+class CustomUser(AbstractUser):
     ROLE_CHOICES= [
     ('listener', "Listener"),
     ('artist', "Artist"),
