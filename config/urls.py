@@ -19,5 +19,5 @@ import accounts.views, cand-bamp.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("signup/", users.views.SignUpView.as_view(), name="signup"),
+    path("signup/", accounts.views.SignUpView.as_view(), name="signup"),
 ]
