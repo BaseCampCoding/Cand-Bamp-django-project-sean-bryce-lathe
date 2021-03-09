@@ -4,8 +4,8 @@ from django.db import models
 from django import forms
 
 ROLE_CHOICES= [
-    ('listener', 'Listener'),
-    ('artist', 'Artist'),
+    ('listener', "Listener"),
+    ('artist', "Artist"),
 ]
 
 GENRE_CHOICES = [
