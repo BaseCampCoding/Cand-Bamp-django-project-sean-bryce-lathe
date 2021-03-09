@@ -9,7 +9,7 @@ class CustomUser(AbstractUser):
     ROLE_CHOICES= [
     ('listener', "Listener"),
     ('artist', "Artist"),
-]
+    ]
 
     GENRE_CHOICES = [
         ('Rock', 'rock'),
