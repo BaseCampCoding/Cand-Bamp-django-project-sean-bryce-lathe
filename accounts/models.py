@@ -6,17 +6,17 @@ from django.db import models
 class CustomUser(AbstractUser):
     ROLE_CHOICES= [
     ('listener', "Listener"),
-    ('artist', "Artist"),
+    ('artist', "Artist")
     ]
 
     GENRE_CHOICES = [
-        ('Rock', 'rock'),
-        ('Jazz', 'jazz'),
+        ('pop', 'Pop'),
+        ('rock', 'Rock'),
+        ('jazz', 'Jazz'),
         ('hip-hop', 'Hip-Hop'),
-        ('Blues', 'blues'),
-        ('Folk', 'folk'),
-        ('Country', 'country'),
-        ('Pop', 'pop'),
+        ('blues', 'Blues'),
+        ('folk', 'Folk'),
+        ('country', 'Country')
     ]
     roles = models.CharField(max_length=8, choices=ROLE_CHOICES, default="Listener")
     genre = models.CharField(max_length=7, choices=GENRE_CHOICES, default="Pop")
