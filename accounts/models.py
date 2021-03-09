@@ -22,7 +22,7 @@ class User(AbstractUser):
     ]
     
     image = models.ImageField()
-    roles = forms.CharField(max_length=8, choices=ROLE_CHOICES, default="Listener")
+    roles = models.CharField(max_length=8, choices=ROLE_CHOICES, default="Listener")
     genre = models.CharField(max_length=7, choices=GENRE_CHOICES, default="Pop")
     about = models.TextField(max_length=500)
     
