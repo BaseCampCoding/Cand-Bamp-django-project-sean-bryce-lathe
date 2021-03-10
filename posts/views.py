@@ -5,13 +5,10 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from .models import Post
 # Create your views here.
-class ArtistListView(LoginRequiredMixin, ListView):
-    model = Post
-    template_name = 'Artist_list.html'
     
 class PostListView(ListView):
     model = Post
-    template_name = 'home.html'
+    template_name = 'Article.html'
 
 class PostDetailView(DetailView):
     model = Post

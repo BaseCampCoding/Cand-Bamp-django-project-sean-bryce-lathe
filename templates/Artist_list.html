@@ -3,17 +3,11 @@
 {% block title %}Artist Post{% endblock title %}
 
 {% block content %}
-    {% for posts in object_list %}
-        <div>
-            <div>
-                <span class="font-weight-bold">{{ posts.title }}</span> &middot;
-                <span class="text-muted">by {{ posts.author }} |
-                {{ posts.date }}</span>
-            </div>
-            <div class="card-body">
-                <p>{{ posts.body }}</p>
-            </div>
+    {% for user in all_user_list %}
+        {% if 'artist' in user.roles %}
+        <div class="card-header ml-1 mr-2">
+            {{ user.username }}
         </div>
-        <br />
+        {% endif %}
     {% endfor %}
 {% endblock content %}
