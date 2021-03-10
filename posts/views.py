@@ -22,6 +22,10 @@ class PostCreateView(CreateView):
     template_name = 'posts/post_new.html'
     fields = ['title', 'body', 'genre']
 
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
 class PostUpdateView(UpdateView):
     model = Post
     template_name = 'post_edit.html'
