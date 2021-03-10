@@ -11,7 +11,7 @@ GENRE_CHOICES = [
         ('folk', 'Folk'),
         ('country', 'Country')
     ]
-class Post(models.Model):
+class ArticlePost(models.Model):
     title = models.CharField(max_length=200)
     author = models.ForeignKey(
         get_user_model(),
