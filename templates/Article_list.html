@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Artist Post{% endblock title %}
+
+{% block content %}
+    {% for posts in object_list %}
+        <div>
+            <div>
+                <span class="text-muted">by {{ posts.author }} |
+                <span class="font-weight-bold">{{ posts.title }}</span></span>
+            </div>
+            <div class="card-body">
+                <p>{{ posts.body }}</p>
+            </div>
+        </div>
+        <br/>
+    {% endfor %}
+{% endblock content %}
