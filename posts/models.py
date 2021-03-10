@@ -17,7 +17,7 @@ class Post(models.Model):
         get_user_model(),
         on_delete=models.CASCADE,
     )
-    body = models.TextField
+    body = models.TextField()
     genre = models.CharField(max_length=7, choices=GENRE_CHOICES, default="Pop")
 
     def __str__(self):
