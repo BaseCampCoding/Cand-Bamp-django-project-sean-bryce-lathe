@@ -12,7 +12,7 @@ class HomePageView(TemplateView):
     
 class ArticlePostListView(ListView):
     model = ArticlePost
-    template_name = 'artist_list.html'
+    template_name = 'article_list.html'
 
 class ArticlePostDetailView(DetailView):
     model = ArticlePost

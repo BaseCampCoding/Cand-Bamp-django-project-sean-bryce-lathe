@@ -14,5 +14,5 @@ class SignUpView(CreateView):
 
 class ArtistListView(LoginRequiredMixin, ListView):
     model = CustomUser
-    template_name = 'Artist_list.html'
+    template_name = 'artist_list.html'
     context_object_name = 'all_user_list'
