@@ -5,6 +5,14 @@
         <h2>{{ object.title }}</h2>
         <p>by {{ object.author }}</p>
         <p>{{ object.body }}</p>
-        <p>{{ object.genre}}</p>
+        <p>{{ object.genre }}</p>
+        {% if object.customuser.image %}
+        <img src="{{ object.customuser.image.url }}" width="240">
+        {% endif %}
     </div>
+    <form action="{% url 'like_articlepost' articlepost.pk %}" method="POST">
+        {% csrf_token %}
+        <button type="submit", name="articlepost_id", value="{{ articlepost.id }}", class="btn btn-primary btn-sm">Like</button>
+    </form>
+    <a href="{% url 'home' %}" class="btn btn-secondary">Back to Homepage</a>
 {% endblock content %}
