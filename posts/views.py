@@ -57,4 +57,4 @@ class ArticlePostDeleteView(DeleteView):
 def LikeView(request, pk):
     post = get_object_or_404(ArticlePost, id=request.POST.get('articlepost.id'))
     post.likes.add(request.customuser)
-    return HttpResponseRedirect(reverse('article_detail', args=[str(pk)]))
+    return HttpResponseRedirect(reverse('post_detail', args=[str(pk)]))
