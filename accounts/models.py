@@ -19,6 +19,7 @@ class CustomUser(AbstractUser):
         ('country', 'Country')
     ]
     roles = models.CharField(max_length=8, choices=ROLE_CHOICES, default="Listener")
+    profile_picture = models.ImageField(upload_to="profile_image", blank=False)
     genre = models.CharField(max_length=7, choices=GENRE_CHOICES, default="Pop")
     about = models.TextField(max_length=500)
     
