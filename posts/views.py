@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
+from django.http import HttpResponseRedirect
 from .models import ArticlePost
  
 # Create your views here.
@@ -37,4 +38,7 @@ class ArticlePostDeleteView(DeleteView):
     template_name = 'post_delete.html'
     success_url = reverse_lazy('home')
 
-
+def LikeView(request, pk):
+    post = get_object_or_404(ArticlePost, id=request.POST.get('articlepost.id'))
+    post.likes.add(request.customuser)
+    return HttpResponseRedirect(reverse('article_detail', args=[str(pk)]))
