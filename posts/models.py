@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth import get_user_model
+from accounts.models import CustomUser
 # Create your models here.
 GENRE_CHOICES = [
         ('pop', 'Pop'),
@@ -19,7 +20,7 @@ class ArticlePost(models.Model):
     )
     body = models.TextField()
     genre = models.CharField(max_length=7, choices=GENRE_CHOICES, default="Pop")
-
+    likes = models.ManyToManyField(CustomUser, related_name="article_posts")
     def __str__(self):
         return self.title
 
