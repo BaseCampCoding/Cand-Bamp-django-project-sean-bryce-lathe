@@ -4,13 +4,33 @@
 
 {% block content %}
     {% for posts in object_list %}
-        <div>
-            <div>
+        <div class="card">
+            <div class="card-header">
                 <span class="text-muted">by <a href="{% url 'post_detail' posts.pk %}">{{ posts.author }}</a> |
                 <span class="font-weight-bold">{{ posts.title }}</span></span>
             </div>
             <div class="card-body">
                 <p>{{ posts.body }}</p>
+            </div>
+            
+            <div class="card-footer">
+                <h4>Comments:</h4>
+                <h7>Add a <a href="{% url 'add_comment' posts.pk %}">Comment</a></h7>
+                <br></br>
+                {% if not posts.comments.all %}
+                     No Comments Yet...<a href="{% url 'add_comment' posts.pk %}">Add One</a>
+                {% else %}
+                    {% for comment in posts.comments.all %}
+                        <strong>
+                            {{ comment.name }} |
+                            {{ comment.data_added }}
+                        </strong>
+                        </br>
+                        <div class="card container-fluid" >
+                        {{ comment.body }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
             </div>
         </div>
         <br/>

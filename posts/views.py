@@ -4,7 +4,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from .models import ArticlePost
+from .models import ArticlePost, Comment
+from .forms import CommentForm
  
 # Create your views here.
 class HomePageView(TemplateView): 
@@ -26,6 +27,20 @@ class ArticlePostCreateView(CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+class AddCommentView(CreateView):
+    model = Comment
+    form_class = CommentForm
+    template_name = 'add_comment.html'
+    
+    def form_valid(self, form):
+        # form.instance.author = self.request.user
+        temp_id = self.request.resolver_match.kwargs["pk"]
+        temp_obj = ArticlePost.objects.get(id=temp_id)
+        form.instance.post = temp_obj
+        return super().form_valid(form)
+    success_url = reverse_lazy('article_list')
+
 
 class ArticlePostUpdateView(UpdateView):
     model = ArticlePost
