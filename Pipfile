@@ -7,7 +7,7 @@ name = "pypi"
 django = "~=3.1.0"
 django-crispy-forms = "==1.9.2"
 pillow = "*"
-whitenoise = "*"
+whitenoise = "==5.2.0"
 
 [dev-packages]
 
