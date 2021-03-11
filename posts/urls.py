@@ -6,6 +6,7 @@ from .views import (
     ArticlePostListView, 
     ArticlePostUpdateView, 
     HomePageView,
+    LikeView,
 )
 
 urlpatterns = [
@@ -15,4 +16,5 @@ urlpatterns = [
     path('post/<int:pk>', ArticlePostDetailView.as_view(), name='post_detail'),
     path('post/new', ArticlePostCreateView.as_view(), name='post_new'),
     path('', HomePageView.as_view(), name='home'),
+    path('like/<int:pk>', LikeView, name="like_articlepost")
 ]

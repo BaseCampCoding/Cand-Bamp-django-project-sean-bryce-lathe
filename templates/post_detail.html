@@ -7,4 +7,9 @@
         <p>{{ object.body }}</p>
         <p>{{ object.genre}}</p>
     </div>
+    <form action="{% url 'like_articlepost' articlepost.pk %}" method="POST">
+        {% csrf_token %}
+        <button type="submit", name="articlepost_id", value="{{ articlepost.id }}", class="btn btn-primary btn-sm">Like</button>
+    </form>
+    <a href="{% url 'home' %}" class="btn btn-secondary">Back to Homepage</a>
 {% endblock content %}
