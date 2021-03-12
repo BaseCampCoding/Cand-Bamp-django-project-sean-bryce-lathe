@@ -15,11 +15,11 @@
             
             <div class="card-footer">
                 <h4>Comments:</h4>
-                <h7>Add a <a href="{% url 'add_comment' posts.pk %}">Comment</a></h7>
-                <br></br>
                 {% if not posts.comments.all %}
-                     No Comments Yet...<a href="{% url 'add_comment' posts.pk %}">Add One</a>
+                     <h6>No Comments Yet...<a href="{% url 'add_comment' posts.pk %}">Add One</a></h6>
                 {% else %}
+                <h6>Add a <a href="{% url 'add_comment' posts.pk %}">Comment</a></h6>
+                </br>
                     {% for comment in posts.comments.all %}
                         <strong>
                             {{ comment.name }} |
@@ -29,6 +29,9 @@
                         <div class="card container-fluid" >
                         {{ comment.body }}
                         </div>
+                        <a href="{% url 'comment_edit' comment.pk %}">Edit</a> |
+                        <a href="{% url 'comment_delete' comment.pk %}">Delete</a>
+                        </br>
                     {% endfor %}
                 {% endif %}
             </div>

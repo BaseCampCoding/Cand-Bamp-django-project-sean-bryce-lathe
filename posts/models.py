@@ -1,5 +1,5 @@
 from django.db import models
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.contrib.auth import get_user_model
 from accounts.models import CustomUser
 # Create your models here.
@@ -43,4 +43,4 @@ class Comment(models.Model):
     def __str__(self):
         return '%s - %s' % (self.post.title, self.name)
     def get_absolute_url(self):
-        return reverse('article_list', args=[str(self.id)])
+        return reverse_lazy('article_list', args=[str(self.id)])

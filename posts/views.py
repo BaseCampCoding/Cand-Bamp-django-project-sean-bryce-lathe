@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy, reverse
@@ -37,25 +37,43 @@ class ArticlePostCreateView(CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
-class AddCommentView(CreateView):
+class AddCommentView(LoginRequiredMixin, CreateView):
     model = Comment
     form_class = CommentForm
     template_name = 'add_comment.html'
     
     def form_valid(self, form):
-        # form.instance.author = self.request.user
+        form.instance.name = self.request.user
         temp_id = self.request.resolver_match.kwargs["pk"]
         temp_obj = ArticlePost.objects.get(id=temp_id)
         form.instance.post = temp_obj
         return super().form_valid(form)
     success_url = reverse_lazy('article_list')
 
+class CommentUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Comment
+    template_name = 'comment_edit.html'
+    form_class = CommentForm
+    success_url = reverse_lazy('article_list')
+
+    def test_func(self): 
+        obj = self.get_object()
+        return obj.name == self.request.user
+
+class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Comment
+    template_name = 'comment_delete.html'
+    success_url = reverse_lazy('article_list')
+
+    def test_func(self): 
+        obj = self.get_object()
+        return obj.name == self.request.user
 
 class ArticlePostUpdateView(UpdateView):
     model = ArticlePost
     template_name = 'post_edit.html'
     fields = ['title', 'body', 'genre']
-
+    
 class ArticlePostDeleteView(DeleteView):
     model = ArticlePost
     template_name = 'post_delete.html'
