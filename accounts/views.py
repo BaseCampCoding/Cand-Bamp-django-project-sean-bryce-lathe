@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from .forms import UserCreationForm
@@ -16,3 +16,7 @@ class ArtistListView(LoginRequiredMixin, ListView):
     model = CustomUser
     template_name = 'artist_list.html'
     context_object_name = 'all_user_list'
+
+class UserProfileDetailView(DetailView):
+    model = CustomUser
+    template_name = 'user_profile.html'

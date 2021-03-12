@@ -27,6 +27,9 @@ class ArticlePost(models.Model):
     def get_absolute_url(self):
         return reverse('post_detail', args=[str(self.id)])
 
+    def total_likes(self):
+        return self.likes.count()
+
 
 class Comment(models.Model):
     post = models.ForeignKey(ArticlePost, related_name="comments", on_delete=models.CASCADE,)

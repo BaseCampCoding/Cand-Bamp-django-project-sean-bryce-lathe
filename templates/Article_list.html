@@ -6,8 +6,8 @@
     {% for posts in object_list %}
         <div class="card">
             <div class="card-header">
-                <span class="text-muted">by <a href="{% url 'post_detail' posts.pk %}">{{ posts.author }}</a> |
-                <span class="font-weight-bold">{{ posts.title }}</span></span>
+                <span class="text-muted">by <a href="{% url 'user_profile' posts.pk %}">{{ posts.author }}</a> |
+                <span class="font-weight-bold"><a href="{% url 'post_detail' posts.pk %}">{{ posts.title }}</a></span></span>
             </div>
             <div class="card-body">
                 <p>{{ posts.body }}</p>
