@@ -12,7 +12,7 @@
     </div>
     <form action="{% url 'like_articlepost' articlepost.pk %}" method="POST">
         {% csrf_token %}
-        <button type="submit" name="articlepost_id" value="{{ articlepost.id }}" class="btn btn-primary btn-sm">Like</button> - {{ post.total_likes }} Likes
+        <button type="submit" name="articlepost_id" value="{{ articlepost.id }}" class="btn btn-primary btn-sm">Like</button>  {{ total_likes }} Likes
     </form>
     <a href="{% url 'home' %}" class="btn btn-secondary">Back to Homepage</a>
 {% endblock content %}
