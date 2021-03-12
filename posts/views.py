@@ -21,6 +21,13 @@ class ArticlePostDetailView(DetailView):
     model = ArticlePost
     template_name = 'post_detail.html'
 
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(**kwargs)
+        TFLC = get_object_or_404(ArticlePost, id=self.kwargs['pk'])
+        total_likes = TFLC.total_likes()
+        context["total_likes"] = total_likes
+        return context
+
 class ArticlePostCreateView(CreateView):
     model = ArticlePost
     template_name = 'posts/post_new.html'
@@ -55,6 +62,6 @@ class ArticlePostDeleteView(DeleteView):
     success_url = reverse_lazy('home')
 
 def LikeView(request, pk):
-    post = get_object_or_404(ArticlePost, id=request.POST.get('articlepost.id'))
-    post.likes.add(request.customuser)
+    post = get_object_or_404(ArticlePost, id=request.POST.get('articlepost_id'))
+    post.likes.add(request.user)
     return HttpResponseRedirect(reverse('post_detail', args=[str(pk)]))
