@@ -21,6 +21,13 @@ class ArticlePostDetailView(DetailView):
     model = ArticlePost
     template_name = 'post_detail.html'
 
+    def get_context_data(self, *args, **kwargs):
+        context = super(ArticlePostDetailView, self).get_context_data
+        TFLC = get_object_or_404(ArticlePost, id=self.kwargs['pk'])
+        total_likes = TFLC.total_likes()
+        context["total_likes"] = total_likes
+        return context
+
 class ArticlePostCreateView(CreateView):
     model = ArticlePost
     template_name = 'posts/post_new.html'
