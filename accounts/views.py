@@ -6,11 +6,8 @@ from django.http import HttpResponseRedirect
 from django.views.generic import CreateView
 from .forms import UserCreationForm
 from .models import CustomUser
-<<<<<<< HEAD
 from posts.models import ArticlePost
-=======
 import accounts
->>>>>>> cd68d4506b5005022b7ac7479d4cee016ff41ab5
 
 # Create your views here.
 class SignUpView(CreateView):

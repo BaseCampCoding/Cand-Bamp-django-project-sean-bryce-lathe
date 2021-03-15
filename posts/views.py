@@ -105,19 +105,8 @@ class ArticlePostDeleteView(DeleteView):
 
 def LikeView(request, pk):
     post = get_object_or_404(ArticlePost, id=request.POST.get('articlepost_id'))
-<<<<<<< HEAD
     post.likes.add(request.user)
-    return HttpResponseRedirect(reverse('post_detail', args=[str(pk)]))
-
-class HomeDetailPage(DetailView):
-    model = ArticlePost
-    template_name = 'home.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['detail_posts'] = ArticlePost.objects.all()
-        return context
-=======
+    # return HttpResponseRedirect(reverse('post_detail', args=[str(pk)]))
     liked = False
     if post.likes.filter(id=request.user.id).exists():
         post.likes.remove(request.user)
@@ -127,4 +116,12 @@ class HomeDetailPage(DetailView):
         liked = True
     return HttpResponseRedirect(reverse('post_detail', args=[str(pk)]))
     
->>>>>>> cd68d4506b5005022b7ac7479d4cee016ff41ab5
+
+class HomeDetailPage(DetailView):
+    model = ArticlePost
+    template_name = 'home.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['detail_posts'] = ArticlePost.objects.all()
+        return context
