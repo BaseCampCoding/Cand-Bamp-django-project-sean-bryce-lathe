@@ -46,6 +46,11 @@ class SongPostCreateView(CreateView):
         form.instance.artist = self.request.user
         return super().form_valid(form)
 
+class SongPostDetailView(DetailView):
+    model = Song
+    template_name = 'artist_song.html'
+    context_object_name = 'user'
+
 class AddCommentView(LoginRequiredMixin, CreateView):
     model = Comment
     form_class = CommentForm

@@ -3,10 +3,11 @@ from django.urls import path
 from .views import (
     ArticlePostCreateView, 
     ArticlePostDeleteView, 
-    ArticlePostDetailView, 
-    ArticlePostListView, 
+    ArticlePostDetailView,
+    ArticlePostListView,
     ArticlePostUpdateView,
     SongPostCreateView,
+    SongPostDetailView,
     HomePageView,
     AddCommentView,
     CommentDeleteView,
