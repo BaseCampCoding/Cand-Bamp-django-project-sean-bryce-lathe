@@ -23,6 +23,7 @@ class CustomUser(AbstractUser):
     genre = models.CharField(max_length=7, choices=GENRE_CHOICES, default="Pop")
     about = models.TextField(max_length=500)
     
+    
 
 # class User(AbstractUser):
 #     genre =  models.CharField()
