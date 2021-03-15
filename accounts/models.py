@@ -22,7 +22,7 @@ class CustomUser(AbstractUser):
     profile_picture = models.ImageField(upload_to="profile_image", blank=False)
     genre = models.CharField(max_length=7, choices=GENRE_CHOICES, default="Pop")
     about = models.TextField(max_length=500)
-    
+    followers = models.ManyToManyField("self", symmetrical=False, blank=True, related_name="m_followers")
 
 # class User(AbstractUser):
 #     genre =  models.CharField()
