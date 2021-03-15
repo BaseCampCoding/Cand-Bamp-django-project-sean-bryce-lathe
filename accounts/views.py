@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect
 from django.views.generic import CreateView
 from .forms import UserCreationForm
 from .models import CustomUser
+import accounts
 
 # Create your views here.
 class SignUpView(CreateView):
@@ -23,6 +24,6 @@ class UserProfileDetailView(DetailView):
     template_name = 'user_profile.html'
 
 def FollowView(request, pk):
-    post = get_object_or_404(CustomUser, id=request.POST.get('articlepost_id'))
-    post.likes.add(request.user)
+    follow = get_object_or_404(CustomUser, id=request.POST.get('from_customuser_id'))
+    accounts.followers.add(request.user)
     return HttpResponseRedirect(reverse('user_profile', args=[str(pk)]))
