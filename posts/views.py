@@ -93,4 +93,4 @@ def LikeView(request, pk):
     post.likes.add(request.user)
     return HttpResponseRedirect(reverse('post_detail', args=[str(pk)]))
     liked = False
-    if post.likes.filter(...)
+    # if post.likes.filter(...)
