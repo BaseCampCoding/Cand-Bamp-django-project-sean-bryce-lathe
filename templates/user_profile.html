@@ -3,5 +3,7 @@
 {% block title %}Profile Page{% endblock title %}
 
 {% block content %}
-    <p>{{ object.username }}</p>
+    <div class="text-center">
+        <p>{{ object.first_name }} {{ object.last_name}}</p>
+    </div>
 {% endblock content %}

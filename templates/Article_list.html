@@ -15,8 +15,8 @@
             
             <div class="card-footer">
                 <h4>Comments:</h4>
-                <h7>Add a <a href="{% url 'add_comment' posts.pk %}">Comment</a></h7>
-                <br></br>
+                <h6>Add a <a href="{% url 'add_comment' posts.pk %}">Comment</a></h6>
+                <br>
                 {% if not posts.comments.all %}
                      No Comments Yet...<a href="{% url 'add_comment' posts.pk %}">Add One</a>
                 {% else %}
@@ -25,7 +25,7 @@
                             {{ comment.name }} |
                             {{ comment.data_added }}
                         </strong>
-                        </br>
+                        <br>
                         <div class="card container-fluid" >
                         {{ comment.body }}
                         </div>

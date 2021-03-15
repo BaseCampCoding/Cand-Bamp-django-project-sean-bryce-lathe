@@ -5,13 +5,15 @@ from .views import (
     ArticlePostDeleteView, 
     ArticlePostDetailView, 
     ArticlePostListView, 
-    ArticlePostUpdateView, 
+    ArticlePostUpdateView,
+    SongPostCreateView,
     HomePageView,
     AddCommentView,
     LikeView,
 )
 
 urlpatterns = [
+    path('song/new', SongPostCreateView.as_view(), name='song_new'),
     path('post/<int:pk>/edit', ArticlePostUpdateView.as_view(), name='post_edit'),
     path('post/<int:pk>/delete', ArticlePostDeleteView.as_view(), name='post_delete'),
     path('post/', ArticlePostListView.as_view(), name='article_list'),

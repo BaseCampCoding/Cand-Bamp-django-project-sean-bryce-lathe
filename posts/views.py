@@ -5,7 +5,7 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
-from .models import ArticlePost, Comment
+from .models import ArticlePost, Comment, Song
 from .forms import CommentForm
 
  
@@ -16,6 +16,15 @@ class HomePageView(TemplateView):
 class ArticlePostListView(ListView):
     model = ArticlePost
     template_name = 'article_list.html'
+
+class ArticlePostCreateView(CreateView):
+    model = ArticlePost
+    template_name = 'posts/post_new.html'
+    fields = ['title', 'body', 'genre']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 class ArticlePostDetailView(DetailView):
     model = ArticlePost
@@ -28,13 +37,13 @@ class ArticlePostDetailView(DetailView):
         context["total_likes"] = total_likes
         return context
 
-class ArticlePostCreateView(CreateView):
-    model = ArticlePost
-    template_name = 'posts/post_new.html'
-    fields = ['title', 'body', 'genre']
+class SongPostCreateView(CreateView):
+    model = Song
+    template_name = 'posts/song_new.html'
+    fields = ['title', 'image', 'audio_file', 'duration']
 
     def form_valid(self, form):
-        form.instance.author = self.request.user
+        form.instance.artist = self.request.user
         return super().form_valid(form)
 
 class AddCommentView(CreateView):
