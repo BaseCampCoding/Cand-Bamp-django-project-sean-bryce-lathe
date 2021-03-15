@@ -83,3 +83,5 @@ def LikeView(request, pk):
     post = get_object_or_404(ArticlePost, id=request.POST.get('articlepost_id'))
     post.likes.add(request.user)
     return HttpResponseRedirect(reverse('post_detail', args=[str(pk)]))
+    liked = False
+    if post.likes.filter(...)
