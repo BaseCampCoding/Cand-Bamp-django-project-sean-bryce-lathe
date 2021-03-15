@@ -1,11 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DetailView
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
+from django.http import HttpResponseRedirect
 from django.views.generic import CreateView
 from .forms import UserCreationForm
 from .models import CustomUser
+<<<<<<< HEAD
 from posts.models import ArticlePost
+=======
+import accounts
+>>>>>>> cd68d4506b5005022b7ac7479d4cee016ff41ab5
 
 # Create your views here.
 class SignUpView(CreateView):
@@ -27,3 +32,7 @@ class UserProfileDetailView(DetailView):
         cur_user_id = self.request.resolver_match.kwargs["pk"]
         context['local_posts'] = ArticlePost.objects.filter(author__id=cur_user_id)
         return context
+def FollowView(request, pk):
+    follow = get_object_or_404(CustomUser, id=request.POST.get('to_customuser_id'))
+    accounts.followers.add(request.user)
+    return HttpResponseRedirect(reverse('user_profile', args=[str(pk)]))

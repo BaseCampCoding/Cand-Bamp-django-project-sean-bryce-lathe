@@ -5,7 +5,7 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
-from .models import ArticlePost, Comment
+from .models import ArticlePost, Comment, Song
 from .forms import CommentForm
 
  
@@ -17,18 +17,7 @@ class ArticlePostListView(ListView):
     model = ArticlePost
     template_name = 'article_list.html'
 
-class ArticlePostDetailView(DetailView):
-    model = ArticlePost
-    template_name = 'post_detail.html'
-
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(**kwargs)
-        TFLC = get_object_or_404(ArticlePost, id=self.kwargs['pk'])
-        total_likes = TFLC.total_likes()
-        context["total_likes"] = total_likes
-        return context
-
-class ArticlePostCreateView(LoginRequiredMixin, CreateView):
+class ArticlePostCreateView(CreateView):
     model = ArticlePost
     template_name = 'posts/post_new.html'
     fields = ['title', 'body', 'genre']
@@ -36,6 +25,41 @@ class ArticlePostCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+class ArticlePostDetailView(DetailView):
+    model = ArticlePost
+    template_name = 'post_detail.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(**kwargs)
+        TFLC = get_object_or_404(ArticlePost, id=self.kwargs['pk'])
+        liked = False
+        if TFLC.likes.filter(id=self.request.user.id).exists():
+            liked = True
+        
+        total_likes = TFLC.total_likes()
+        context["total_likes"] = total_likes
+        context["liked"] = liked
+        return context
+
+class ArticlePostCreateView(LoginRequiredMixin, CreateView):
+    model = ArticlePost
+    template_name = 'posts/post_new.html'
+    fields = ['title', 'body', 'genre']
+    
+class SongPostCreateView(CreateView):
+    model = Song
+    template_name = 'posts/song_new.html'
+    fields = ['title', 'image', 'audio_file', 'duration']
+
+    def form_valid(self, form):
+        form.instance.artist = self.request.user
+        return super().form_valid(form)
+
+class SongPostDetailView(DetailView):
+    model = Song
+    template_name = 'artist_song.html'
+    context_object_name = 'user'
 
 class AddCommentView(LoginRequiredMixin, CreateView):
     model = Comment
@@ -81,6 +105,7 @@ class ArticlePostDeleteView(DeleteView):
 
 def LikeView(request, pk):
     post = get_object_or_404(ArticlePost, id=request.POST.get('articlepost_id'))
+<<<<<<< HEAD
     post.likes.add(request.user)
     return HttpResponseRedirect(reverse('post_detail', args=[str(pk)]))
 
@@ -92,3 +117,14 @@ class HomeDetailPage(DetailView):
         context = super().get_context_data(**kwargs)
         context['detail_posts'] = ArticlePost.objects.all()
         return context
+=======
+    liked = False
+    if post.likes.filter(id=request.user.id).exists():
+        post.likes.remove(request.user)
+        liked = False
+    else:
+        post.likes.add(request.user)
+        liked = True
+    return HttpResponseRedirect(reverse('post_detail', args=[str(pk)]))
+    
+>>>>>>> cd68d4506b5005022b7ac7479d4cee016ff41ab5

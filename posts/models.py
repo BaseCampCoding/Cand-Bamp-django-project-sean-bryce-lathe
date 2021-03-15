@@ -20,7 +20,7 @@ class ArticlePost(models.Model):
     )
     body = models.TextField()
     genre = models.CharField(max_length=7, choices=GENRE_CHOICES, default="Pop")
-    likes = models.ManyToManyField(CustomUser, related_name="article_posts")
+    likes = models.ManyToManyField(CustomUser, related_name="user_article_post_likes")
     def __str__(self):
         return self.title
 
@@ -30,6 +30,20 @@ class ArticlePost(models.Model):
     def total_likes(self):
         return self.likes.count()
 
+
+class Song(models.Model):
+    title = models.TextField()
+    artist = models.ForeignKey(
+        get_user_model(),
+        on_delete=models.CASCADE,
+    )
+    image = models.ImageField(upload_to="song_image", blank=False)
+    audio_file = models.FileField(upload_to="song_file", blank=True, null=True)
+    duration = models.CharField(max_length=20)
+    paginate_by = 2
+
+    def __str__(self):
+        return self.title
 
 class Comment(models.Model):
     post = models.ForeignKey(ArticlePost, related_name="comments", on_delete=models.CASCADE,)

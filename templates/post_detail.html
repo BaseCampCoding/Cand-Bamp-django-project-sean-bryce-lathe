@@ -10,9 +10,18 @@
             <img src="{{ object.author.profile_picture.url }}" width="240">
         {% endif %}
     </div>
+    {% if user.is_authenticated %}
     <form action="{% url 'like_articlepost' articlepost.pk %}" method="POST">
         {% csrf_token %}
+
+        {% if liked %}
+        <button type="submit" name="articlepost_id" value="{{ articlepost.id }}" class="btn btn-danger btn-sm">Unlike</button>  {{ total_likes }} Likes
+        {% else %}
         <button type="submit" name="articlepost_id" value="{{ articlepost.id }}" class="btn btn-primary btn-sm">Like</button>  {{ total_likes }} Likes
+        {% endif %}
     </form>
+{% else %}
+    <p><a href="{% url 'login' %}">Login</a> to like this post</p>
     <a href="{% url 'home' %}" class="btn btn-secondary">Back to Homepage</a>
+{% endif %}
 {% endblock content %}

@@ -3,9 +3,11 @@ from django.urls import path
 from .views import (
     ArticlePostCreateView, 
     ArticlePostDeleteView, 
-    ArticlePostDetailView, 
-    ArticlePostListView, 
-    ArticlePostUpdateView, 
+    ArticlePostDetailView,
+    ArticlePostListView,
+    ArticlePostUpdateView,
+    SongPostCreateView,
+    SongPostDetailView,
     HomePageView,
     AddCommentView,
     CommentDeleteView,
@@ -14,6 +16,7 @@ from .views import (
 )
 
 urlpatterns = [
+    path('song/new', SongPostCreateView.as_view(), name='song_new'),
     path('post/<int:pk>/edit', ArticlePostUpdateView.as_view(), name='post_edit'),
     path('post/<int:pk>/delete', ArticlePostDeleteView.as_view(), name='post_delete'),
     path('post/', ArticlePostListView.as_view(), name='article_list'),
@@ -23,5 +26,5 @@ urlpatterns = [
     path('post/<int:pk>/comment', AddCommentView.as_view(), name='add_comment'),
     path('post/<int:pk>/comment/delete', CommentDeleteView.as_view(), name='comment_delete'),
     path('post/<int:pk>/comment/edit', CommentUpdateView.as_view(), name='comment_edit'),
-    path('like/<int:pk>', LikeView, name="like_articlepost")
+    path('like/<int:pk>', LikeView, name="like_articlepost"),
 ]
