@@ -33,8 +33,13 @@ class ArticlePostDetailView(DetailView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(**kwargs)
         TFLC = get_object_or_404(ArticlePost, id=self.kwargs['pk'])
+        liked = False
+        if TFLC.likes.filter(id=self.request.user.id).exists():
+            liked = True
+        
         total_likes = TFLC.total_likes()
         context["total_likes"] = total_likes
+        context["liked"] = liked
         return context
 
 class SongPostCreateView(CreateView):
@@ -95,7 +100,12 @@ class ArticlePostDeleteView(DeleteView):
 
 def LikeView(request, pk):
     post = get_object_or_404(ArticlePost, id=request.POST.get('articlepost_id'))
-    post.likes.add(request.user)
-    return HttpResponseRedirect(reverse('post_detail', args=[str(pk)]))
     liked = False
-    # if post.likes.filter(...)
+    if post.likes.filter(id=request.user.id).exists():
+        post.likes.remove(request.user)
+        liked = False
+    else:
+        post.likes.add(request.user)
+        liked = True
+    return HttpResponseRedirect(reverse('post_detail', args=[str(pk)]))
+    

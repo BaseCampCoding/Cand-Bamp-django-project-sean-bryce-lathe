@@ -5,7 +5,7 @@
 {% block content %}
 <form action="{% url 'follow_user' customuser.pk %}" method="POST">
     {% csrf_token %}
-    <button type="submit" name="from_customuser_id" value="{{ customuser.id }}" class="btn btn-primary btn-sm">Follow</button>
+    <button type="submit" name="become_follower" value="{{ to_customuser_id }}" class="btn btn-primary btn-sm">Follow</button>
 </form>
     <p>{{ object.username }}</p>
 {% endblock content %}

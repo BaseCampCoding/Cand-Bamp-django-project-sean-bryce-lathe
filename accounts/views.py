@@ -24,6 +24,6 @@ class UserProfileDetailView(DetailView):
     template_name = 'user_profile.html'
 
 def FollowView(request, pk):
-    follow = get_object_or_404(CustomUser, id=request.POST.get('from_customuser_id'))
+    follow = get_object_or_404(CustomUser, id=request.POST.get('to_customuser_id'))
     accounts.followers.add(request.user)
     return HttpResponseRedirect(reverse('user_profile', args=[str(pk)]))
