@@ -5,20 +5,27 @@
 {% block content %}
 <div class="music-player">
    <div class="cover">
-        <img src="{{ object.image.url }}" width="240"/>
+        <img id="icon" src="{{ object.image.url }}" width="240">
    </div>
    <div class="titre">
-    <h3>
-     {{object.artist}}
-    </h3>
-    <h1>
+    <h3 class="whiteh3"> {{object.artist}} </h3>
+    <h1 class="whiteh1">
      {{object.title}}
     </h1>
    </div>
    <div class="lecteur">
-    <audio class="fc-media" style="width: 100%">
+    <audio id="mySong">
         <source src="{{ object.audio_file.url }}" type="audio/mp3">
     </audio>
    </div>
 </div>
 {% endblock content %}
+<script>
+    var mySong = document.getElementById("mySong");
+    var icon = document.getElementById("icon");
+
+    icon.onclick = function(){
+        mySong.play();
+    }
+
+</script>
