@@ -24,9 +24,11 @@
         <div class="bg-dark shadow rounded overflow-hidden">
             <div class="px-4 pt-0 pb-4 cover">
                 <div class="media align-items-end profile-head">
-                    <div class="profile mr-3">   
-                        <img src="{{ object.profile_picture.url }}" alt="..." width="130" class="rounded mb-2 img-thumbnail">
-                        <a href="#" class="btn btn-outline-light btn-sm btn-block">Edit profile</a>
+                    <div class="profile mr-3">
+                        {% if object.profile_picture %}
+                            <img src="{{ object.profile_picture.url }}" alt="..." width="140" class="rounded mb-2 img-thumbnail">
+                            <a href="#" class="btn btn-outline-light btn-sm btn-block">Edit profile</a>
+                        {% endif %}
                     </div>
                     <div class="media-body mb-5 text-white">
                         <h4 class="mt-3 mb-1">{{ object.username }}</h4>
