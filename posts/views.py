@@ -49,6 +49,7 @@ class ArticlePostCreateView(LoginRequiredMixin, CreateView):
     
 class SongPostCreateView(CreateView):
     model = Song
+    success_url = reverse_lazy('artist_list')
     template_name = 'posts/song_new.html'
     fields = ['title', 'image', 'audio_file', 'duration']
 
