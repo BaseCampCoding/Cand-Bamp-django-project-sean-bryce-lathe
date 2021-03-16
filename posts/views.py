@@ -17,9 +17,9 @@ class ArticlePostListView(ListView):
     model = ArticlePost
     template_name = 'article_list.html'
 
-class ArticlePostCreateView(CreateView):
+class ArticlePostCreateView(LoginRequiredMixin, CreateView):
     model = ArticlePost
-    template_name = 'posts/post_new.html'
+    template_name = 'post_new.html'
     fields = ['title', 'body', 'genre']
 
     def form_valid(self, form):
@@ -41,10 +41,10 @@ class ArticlePostDetailView(DetailView):
         context["liked"] = liked
         return context
 
-class ArticlePostCreateView(LoginRequiredMixin, CreateView):
-    model = ArticlePost
-    template_name = 'posts/post_new.html'
-    fields = ['title', 'body', 'genre']
+# class ArticlePostCreateView(LoginRequiredMixin, CreateView):
+#     model = ArticlePost
+#     template_name = 'posts/post_new.html'
+#     fields = ['title', 'body', 'genre']
     
 class SongPostCreateView(CreateView):
     model = Song
