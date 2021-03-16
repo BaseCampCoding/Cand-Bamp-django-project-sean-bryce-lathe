@@ -3,12 +3,12 @@ var audio = {    
         var $that = this;        
             $(function() {            
                 $that.components.media();        
-            });    
+            });
         },
         components: {        
             media: function(target) {            
                 var media = $('audio.fc-media', (target !== undefined) ? target : 'body');            
-                if (media.length) {                
+                if (media.length) {
                     media.mediaelementplayer({                    
                         audioHeight: 40,
                         features : ['playpause', 'current', 'duration', 'progress', 'volume', 'tracks', 'fullscreen'],
