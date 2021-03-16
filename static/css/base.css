@@ -12,7 +12,7 @@ body {
 }
 
 .whiteh1 {
-    margin: 0;
+    margin-bottom: 12px;
     font-size: 33px;
     color: #fff;
     padding: 0 10%;
@@ -34,7 +34,8 @@ body {
     margin: auto;
     margin-top: 2.7%;
     border-radius: 10px 10px 10px 10px;
-    background: transparent linear-gradient(to bottom,rgba(63, 64, 70, 0.9) 50%,rgb(65, 65, 68) 70%);
+    background: transparent linear-gradient(to bottom,rgba(47, 47, 51, 0.9) 50%,rgb(51, 51, 53) 70%);
+    box-shadow: 1px 10px 20px 5px;
 }
 
 .cover {
