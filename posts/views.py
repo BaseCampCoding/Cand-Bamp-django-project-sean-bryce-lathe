@@ -19,7 +19,7 @@ class ArticlePostListView(ListView):
 
 class ArticlePostCreateView(LoginRequiredMixin, CreateView):
     model = ArticlePost
-    template_name = 'post_new.html'
+    template_name = 'posts/post_new.html'
     fields = ['title', 'body', 'genre']
 
     def form_valid(self, form):
