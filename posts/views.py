@@ -58,9 +58,8 @@ class SongPostCreateView(CreateView):
 class SongPostDetailView(DetailView):
     model = Song
     template_name = 'artist_song.html'
-    context_object_name = 'user'
 
-class AddCommentView(LoginRequiredMixin, CreateView):
+class AddCommentView(CreateView):
     model = Comment
     form_class = CommentForm
     template_name = 'add_comment.html'

@@ -4,24 +4,21 @@
 
 {% block content %}
 <div class="music-player">
-    {% for item in page_obj %}
    <div class="cover">
-    <img alt="" src="{{item.image.url}}"/>
+        <img src="{{ object.image.url }}" width="240"/>
    </div>
    <div class="titre">
     <h3>
      {{object.artist}}
     </h3>
     <h1>
-     {{item.title}}
+     {{object.title}}
     </h1>
    </div>
    <div class="lecteur">
-    <audio class="fc-media" style="width: 100%;">
-     <source src="{% if item.audio_file %}{{item.audio_file.url}} {% else %} {{item.audio_link}} {% endif %}" type="audio/mp3"/>
+    <audio class="fc-media" style="width: 100%">
+        <source src="{{ object.audio_file.url }}" type="audio/mp3">
     </audio>
-
    </div>
-   {% endfor %}
-  </div>
+</div>
 {% endblock content %}
