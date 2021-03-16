@@ -12,7 +12,7 @@ class UserAdmin(UserAdmin):
         'genre', 'roles', 'about', 'profile_picture', 'is_staff',
     ]
     fieldsets = UserAdmin.fieldsets + (
-        (None, {'fields': ('genre', 'roles', 'about', 'profile_picture',)}),
+        (None, {'fields': ('genre', 'roles', 'about', 'profile_picture', 'followers', )}),
     )
     add_fieldsets = UserAdmin.add_fieldsets + (
         (None, {'fields': ('genre', 'roles', 'about', 'profile_picture',)}),
