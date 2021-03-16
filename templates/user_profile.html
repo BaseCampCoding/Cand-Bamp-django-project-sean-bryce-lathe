@@ -10,7 +10,7 @@
             <div class="px-4 pt-0 pb-4 cover">
                 <div class="media align-items-end profile-head">
                     <div class="profile mr-3">   
-                        <img src="{{ object.profile_picture }}" alt="..." width="130" class="rounded mb-2 img-thumbnail">
+                        <img src="{{ object.profile_picture.url }}" alt="..." width="130" class="rounded mb-2 img-thumbnail">
                         <a href="#" class="btn btn-outline-light btn-sm btn-block">Edit profile</a>
                     </div>
                     <div class="media-body mb-5 text-white">
@@ -29,7 +29,9 @@
                             {% csrf_token %}
                             <button type="submit" name="become_follower" value="{{ to_customuser_id }}" class="btn btn-primary btn-sm">Follow</button>
                         </form>
-                        
+                    </div>
+                    <div class="media-body mt-6 mb-5 text-white">
+                        <h4>About</h4>
                     </div>
                 </div>
             </div>
