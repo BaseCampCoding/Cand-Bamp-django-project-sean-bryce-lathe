@@ -36,7 +36,6 @@ class ArticlePostDetailView(DetailView):
         liked = False
         if TFLC.likes.filter(id=self.request.user.id).exists():
             liked = True
-        
         total_likes = TFLC.total_likes()
         context["total_likes"] = total_likes
         context["liked"] = liked

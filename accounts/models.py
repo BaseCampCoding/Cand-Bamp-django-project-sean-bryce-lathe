@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-
+from django.apps import apps
 # Create your models here.
 class CustomUser(AbstractUser):
     ROLE_CHOICES= [
@@ -24,6 +24,16 @@ class CustomUser(AbstractUser):
     about = models.TextField(max_length=500)
     
     followers = models.ManyToManyField("self", symmetrical=False, blank=True, related_name="m_followers")
+    def total_likes(self):
+        Posts = apps.get_model("posts", "ArticlePost")
+        all_posts_by_user = Posts.objects.filter(author__id=self.id)
+        total = 0
+        for i in all_posts_by_user:
+            total += i.total_likes()
+        return total
+    
+    def total_follower(self):
+        return self.followers.count()
 
 # class User(AbstractUser):
 #     genre =  models.CharField()
