@@ -10,22 +10,30 @@
             <div class="px-4 pt-0 pb-4 cover">
                 <div class="media align-items-end profile-head">
                     <div class="profile mr-3">
-                        <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" alt="..." width="130" class="rounded mb-2 img-thumbnail">
+                        <img src="{{ object.author.profile_picture }}" alt="..." width="130" class="rounded mb-2 img-thumbnail">
                         <a href="#" class="btn btn-outline-light btn-sm btn-block">Edit profile</a>
                     </div>
                     <div class="media-body mb-5 text-white">
-                        <h4 class="mt-0 mb-0">{{ object.username }}</h4>
-                        <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i>New York</p>
+                        <h4 class="mt-3 mb-1">{{ object.username }}</h4>
+                        {% if 'artist' in roles %}
+                            <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i>Artist &#127925;</p>
+                        {% elif 'listener' in roles %}
+                            <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i>Listener &#127911;</p>
+                        {% endif %}
+                        <form action="{% url 'follow_user' customuser.pk %}" method="POST" class="md-2">
+                            {% csrf_token %}
+                            <button type="submit" name="become_follower" value="{{ to_customuser_id }}" class="btn btn-primary btn-sm">Follow</button>
+                        </form>
                     </div>
                 </div>
             </div>
             <div class="bg-light p-4 d-flex justify-content-end text-center">
                 <ul class="list-inline mb-0">
                     <li class="list-inline-item">
-                        <h5 class="font-weight-bold mb-0 d-block">{{ articlepost.total_likes }}</h5><small class="text-muted"> <i class="fas fa-image mr-1"></i>Likes</small>
+                        <h5 class="font-weight-bold mb-0 d-block">{{ object.total_likes }}</h5><small class="text-muted"> <i class="fas fa-image mr-1"></i>Likes</small>
                     </li>
                     <li class="list-inline-item">
-                        <h5 class="font-weight-bold mb-0 d-block">745</h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Followers</small>
+                        <h5 class="font-weight-bold mb-0 d-block">{{ object.total_follower }}</h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Followers</small>
                     </li>
                     <li class="list-inline-item">
                         <h5 class="font-weight-bold mb-0 d-block">340</h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Following</small>
@@ -46,10 +54,4 @@
         </div>
     </div>
 </div> 
-
-<form action="{% url 'follow_user' customuser.pk %}" method="POST">
-    {% csrf_token %}
-    <button type="submit" name="become_follower" value="{{ to_customuser_id }}" class="btn btn-primary btn-sm">Follow</button>
-</form>
-    <p>{{ object.username }}</p>
 {% endblock content %}

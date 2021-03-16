@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth import get_user_model
 from accounts.models import CustomUser
+
 # Create your models here.
 GENRE_CHOICES = [
         ('pop', 'Pop'),
