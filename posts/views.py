@@ -42,6 +42,11 @@ class ArticlePostDetailView(DetailView):
         context["liked"] = liked
         return context
 
+class ArticlePostCreateView(LoginRequiredMixin, CreateView):
+    model = ArticlePost
+    template_name = 'posts/post_new.html'
+    fields = ['title', 'body', 'genre']
+    
 class SongPostCreateView(CreateView):
     model = Song
     template_name = 'posts/song_new.html'
@@ -54,9 +59,8 @@ class SongPostCreateView(CreateView):
 class SongPostDetailView(DetailView):
     model = Song
     template_name = 'artist_song.html'
-    context_object_name = 'user'
 
-class AddCommentView(LoginRequiredMixin, CreateView):
+class AddCommentView(CreateView):
     model = Comment
     form_class = CommentForm
     template_name = 'add_comment.html'
@@ -100,6 +104,8 @@ class ArticlePostDeleteView(DeleteView):
 
 def LikeView(request, pk):
     post = get_object_or_404(ArticlePost, id=request.POST.get('articlepost_id'))
+    post.likes.add(request.user)
+    # return HttpResponseRedirect(reverse('post_detail', args=[str(pk)]))
     liked = False
     if post.likes.filter(id=request.user.id).exists():
         post.likes.remove(request.user)
@@ -109,3 +115,12 @@ def LikeView(request, pk):
         liked = True
     return HttpResponseRedirect(reverse('post_detail', args=[str(pk)]))
     
+
+class HomeDetailPage(DetailView):
+    model = ArticlePost
+    template_name = 'home.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['detail_posts'] = ArticlePost.objects.all()
+        return context

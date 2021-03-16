@@ -16,6 +16,7 @@ from .views import (
 )
 
 urlpatterns = [
+    path('song/<int:pk>', SongPostDetailView.as_view(), name='artist_song'),
     path('song/new', SongPostCreateView.as_view(), name='song_new'),
     path('post/<int:pk>/edit', ArticlePostUpdateView.as_view(), name='post_edit'),
     path('post/<int:pk>/delete', ArticlePostDeleteView.as_view(), name='post_delete'),
