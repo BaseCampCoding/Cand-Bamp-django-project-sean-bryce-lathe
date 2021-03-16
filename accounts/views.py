@@ -15,7 +15,7 @@ class SignUpView(CreateView):
     success_url = reverse_lazy('login')
     template_name = 'registration/signup.html'
 
-class ArtistListView(LoginRequiredMixin, ListView):
+class ArtistListView(ListView):
     model = CustomUser
     template_name = 'artist_list.html'
     context_object_name = 'all_user_list'
