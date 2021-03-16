@@ -38,4 +38,10 @@ def FollowView(request, pk):
     user_to_follow = get_object_or_404(CustomUser, id=request.user.id)
     user_to_follow.followers.add(request.user)
     user_to_follow.save()
+    following = False
+    if user_to_follow.followers.filter(id=request.user.id).exists():
+        user_to_follow.followers.remove(request.user)
+    else:
+        user_to_follow.followers.add(request.user)
+        following = True
     return HttpResponseRedirect(reverse('user_profile', args=[str(pk)]))

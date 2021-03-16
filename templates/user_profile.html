@@ -3,6 +3,21 @@
 {% block title %}Profile Page{% endblock title %}
 
 {% block content %}
+{% if user.is_authenticated %}
+        <form action="{% url 'follow_user' customuser.pk %}" method="POST" class="md-2">
+            {% csrf_token %}
+
+            {% if following %}
+            <button type="submit" name="become_follower" value="{{ to_customuser_id }}" class="btn btn-danger btn-sm">Unfollow</button>
+
+            {% else %}
+            <button type="submit" name="become_follower" value="{{ to_customuser_id }}" class="btn btn-primary btn-sm">Follow</button>
+            {% endif%}
+        </form>
+{% else %}
+    <p><a href="{% url 'login' %}">Login</a> to follow this user</p>
+{% endif %}
+
 <div class="row py-4 px-8">
     <div class="col-md-9 mx-auto">
         <!-- Profile widget -->
@@ -25,10 +40,9 @@
                         <p class="small mt--10">
                         <i class="fas fa-map-marker-alt mr-2"></i>{{ object.genre }}
                         </p>
-                        <form action="{% url 'follow_user' customuser.pk %}" method="POST" class="md-2">
-                            {% csrf_token %}
-                            <button type="submit" name="become_follower" value="{{ to_customuser_id }}" class="btn btn-primary btn-sm">Follow</button>
-                        </form>
+
+                        
+                        
                     </div>
                     <div class="media-body mt-6 mb-5 text-white">
                         <h4>About</h4>
