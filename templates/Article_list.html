@@ -16,7 +16,6 @@
             
             <div class="card-footer">
                 <h4>Comments:</h4>
-                <h6>Add a <a href="{% url 'add_comment' posts.pk %}">Comment</a></h6>
                 <br>
                 {% if not posts.comments.all %}
                      <h6>No Comments Yet...<a href="{% url 'add_comment' posts.pk %}">Add One</a></h6>
