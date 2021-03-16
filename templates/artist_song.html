@@ -1,6 +1,27 @@
 {% extends 'base.html' %}
 
-{% block title %}Home{% endblock title %}
+{% block title %}Artist Song{% endblock title %}
 
 {% block content %}
+<div class="music-player">
+    {% for item in page_obj %}
+   <div class="cover">
+    <img alt="" src="{{item.image.url}}"/>
+   </div>
+   <div class="titre">
+    <h3>
+     {{object.artist}}
+    </h3>
+    <h1>
+     {{item.title}}
+    </h1>
+   </div>
+   <div class="lecteur">
+    <audio class="fc-media" style="width: 100%;">
+     <source src="{% if item.audio_file %}{{item.audio_file.url}} {% else %} {{item.audio_link}} {% endif %}" type="audio/mp3"/>
+    </audio>
+
+   </div>
+   {% endfor %}
+  </div>
 {% endblock content %}
