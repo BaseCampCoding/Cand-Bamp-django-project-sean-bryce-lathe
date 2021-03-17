@@ -30,8 +30,7 @@ class UserProfileDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         cur_user_id = self.request.resolver_match.kwargs["pk"]
         found_user = CustomUser.objects.filter(id=cur_user_id).first()
-        context['following'] = found_user.followers.filter(id=self.request.user.id).exists()
-        print(found_user, context['following'], found_user.followers) 
+        context['following'] = found_user.followers.filter(id=self.request.user.id).exists() 
 
         context['local_posts'] = ArticlePost.objects.filter(author__id=cur_user_id)
         context['roles'] = self.object.roles
@@ -42,7 +41,6 @@ def FollowView(request, pk):
     user_to_follow = get_object_or_404(CustomUser, id=pk)
     following = False
     if request.user in user_to_follow.followers.all():
-        print("WHY ARE YOU LIKE THIS DJANGO")
         user_to_follow.followers.remove(request.user)
         user_to_follow.save()
     else:
