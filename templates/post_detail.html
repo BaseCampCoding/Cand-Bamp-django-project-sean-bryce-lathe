@@ -2,10 +2,10 @@
 
 {% block content %}
     <div class="post-entry">
-        <h2>{{ object.title }}</h2>
-        <p>by {{ object.author }}</p>
+        <h2 class="display-4">{{ object.title }}</h2>
+        <h4>by {{ object.author }}</h4>
         <p>{{ object.body }}</p>
-        <p>{{ object.genre }}</p>
+        <h5>Genre: {{ object.genre }}</h5>
     </div>
     {% if user.is_authenticated %}
     <form action="{% url 'like_articlepost' articlepost.pk %}" method="POST">
