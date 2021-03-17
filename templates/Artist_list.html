@@ -6,6 +6,7 @@
     {% for artist in all_user_list %}
         {% if 'artist' in artist.roles %}
         <div class="card-header ml-1 mr-2 mb-3">
+            <img src="{{ artist.image.url }}" width="140">
             <a href="{% url 'artist_song' artist.pk %}">{{ artist }}</a>
         </div>
         {% endif %}
