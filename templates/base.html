@@ -30,8 +30,10 @@
                             Post
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            {% if 'artist' == user.roles %}
                             <a class="dropdown-item" href="{% url 'song_new' %}">Post New Song</a>
                             <div class="dropdown-divider"></div>
+                            {% endif %}
                             <a class="dropdown-item" href="{% url 'post_new' %}">New Article</a>
                             </div>
                         </li>
