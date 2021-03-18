@@ -5,6 +5,7 @@
 {% block content %}
     {% for posts in object_list %}
     <!-- Fixing author detection to give correct detail page -->
+    <body style="background: #7abecc;">
         <div class="card">
             <div class="card-header">
                 <span class="text-muted">by <a href="{% url 'user_profile' posts.author.id %}">{{ posts.author }}</a> |
@@ -39,5 +40,6 @@
             </div>
         </div>
         <br/>
+    </body>
     {% endfor %}
 {% endblock content %}
