@@ -41,6 +41,11 @@ class UserProfileEdit(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = CustomUser
     template_name = 'user_profile_edit.html'
     fields = ['roles', 'profile_picture', 'genre', 'about']
+
+    def form_valid(self, form):
+        form.instance.artist = self.request.user
+        form.save()
+        return super().form_valid(form)
     
     def get_success_url(self):
         return reverse_lazy('user_profile', kwargs={'pk': self.object.pk})
