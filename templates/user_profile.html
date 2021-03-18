@@ -71,18 +71,26 @@
                     </div>
                 {% endfor %}
                     <h4 class="md-0">Song Posts</h4>
-                    <div class="post-grid">
+                    <!-- <div class="post-grid">
                     {% for p in Song_posts %} 
                         <div class="songs_lis song-title song-image">
                             <div>
                                 <img class="rounded " src="{{ p.image.url }}" width="240">
                             </div>
                             <div class="name-links">
-                                <h1 class="song-title whiteh1"><a href="{% url 'artist_song' p.pk %}">{{p.title}}</a></h1>
+                                <h1 class="whiteh1"><a class="song-title" href="{% url 'artist_song' p.pk %}">{{p.title}}</a></h1>
                             </div>
                         </div>
-                    {% endfor %}
-                    </div>
+                    {% endfor %} -->
+                    <div class="py-8">
+                        <div class="card" style="width: 30rem;">
+                          <ol class="list-group list-group-flush pre-scrollable order">
+                            {% for p in Song_posts %}
+                            <li class="list-group-item list"><img class="rounded" src="{{ p.image.url }}" width="90"><a class="song-title" href="{% url 'artist_song' p.pk %}">{{p.title}}</a></li>
+                            {% endfor %} 
+                          </ol>
+                        </div>
+                      </div>
                 </div>
             </div>
         </div>
