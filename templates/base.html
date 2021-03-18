@@ -41,14 +41,14 @@
                     {% endif %}
                 </ul>
                 {% if user.is_authenticated %}
-                <ul class="navbar-nav mr-lg-5">
+                <ul class="navbar-nav mr-5 pr-5">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ user.first_name }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
-                            <a class="dropdown-item" href="{% url 'password_change' %}">Password change</a>
+                            <a class="dropdown-item" href="{% url 'password_change' %}">Password Change</a>
                         </div>
                     </li>
                 </ul>
