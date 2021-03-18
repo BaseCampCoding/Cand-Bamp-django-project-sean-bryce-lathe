@@ -25,8 +25,8 @@ body {
 .music-player {
     display: block;
     position: relative;
-    width: 450px;
-    height: 570px;
+    width: 350px;
+    height: 470px;
     margin: auto;
     margin-top: 2.7%;
     border-radius: 10px 10px 10px 10px;
@@ -37,17 +37,17 @@ body {
 .cover {
     float: left;
     width: 100%;
-    height: 66%;
+    border-radius: 10px 10px 10px 10px;
 }
 
-.cover #img {
-    display: block;
-    position: absolute;
-    top: 8%;
-    left: 14%;
-    width: 53%;
-    margin: auto;
-    text-align: center;
+.cover .img {
+    display: flex;
+    padding: 30px 25px 12px 25px;
+    object-fit: fill; /* Do not scale the image */
+    object-position: center; /* Center the image within the element */
+    width: 100%;
+    max-height: 250px;
+    margin-bottom: .5rem;
 }
 
 .title {
