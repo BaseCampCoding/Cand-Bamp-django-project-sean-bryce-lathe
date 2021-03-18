@@ -33,14 +33,14 @@ class ArticlePost(models.Model):
 
 
 class Song(models.Model):
-    title = models.TextField()
+    title = models.TextField(max_length=13)
     artist = models.ForeignKey(
         get_user_model(),
         on_delete=models.CASCADE,
     )
     image = models.ImageField(upload_to="song_image", blank=True)
     audio_file = models.FileField(upload_to="song_file", blank=True, null=True)
-    duration = models.CharField(max_length=20)
+    duration = models.CharField(max_length=5)
     paginate_by = 2
 
     def __str__(self):
