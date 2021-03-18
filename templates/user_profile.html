@@ -85,13 +85,7 @@
                                 <img src="{{ p.image.url }}" width="240" class="img-fluid rounded">
                             </div>
                                 <div class="titre">
-                                <h1 class="whiteh1">{{p.title}} </h1>
-                                </div>
-                                <div class="px-sm--9 lecteur">
-                                &nbsp; &nbsp; &nbsp;
-                                <audio controls>
-                                    <source src="{{ p.audio_file.url }}" type="audio/mp3">
-                                </audio>
+                                <h1 class="white"><a href="{% url 'artist_song' p.pk %}">{{p.title}}</a></h1>
                                 </div>
                             </div>
                         </div>

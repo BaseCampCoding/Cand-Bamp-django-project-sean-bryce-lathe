@@ -7,10 +7,12 @@ from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
 from .models import ArticlePost, Comment, Song
 from .forms import CommentForm
+from accounts.models import CustomUser
 
  
 # Create your views here.
-class HomePageView(TemplateView): 
+class HomePageView(ListView): 
+    model = CustomUser
     template_name = 'home.html'
     
 class ArticlePostListView(ListView):

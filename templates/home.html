@@ -26,11 +26,11 @@
 <div class="py-5">
   <div class="card" style="width: 18rem;">
     <div class="card-header">
-      Featured
+      List User
     </div>
     <ul class="list-group list-group-flush">
-      {% for user in all_user_list %}
-      <li class="list-group-item">{{ user }}</li>
+      {% for user in object_list %}
+      <li class="list-group-item"><a href="{% url 'user_profile' user.id %}">{{ user.username }}</a></li>
       {% endfor %} 
     </ul>
   </div>
