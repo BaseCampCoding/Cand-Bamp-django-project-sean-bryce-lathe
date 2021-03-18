@@ -1,12 +1,13 @@
 from django.shortcuts import render, get_object_or_404
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import ListView, DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
 from django.views.generic import CreateView
 from .forms import UserCreationForm
 from .models import CustomUser
-from posts.models import ArticlePost
+from posts.models import ArticlePost, Song
 import accounts
 
 # Create your views here.
@@ -29,19 +30,32 @@ class UserProfileDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         cur_user_id = self.request.resolver_match.kwargs["pk"]
+        found_user = CustomUser.objects.filter(id=cur_user_id).first()
+        context['following'] = found_user.followers.filter(id=self.request.user.id).exists() 
         context['local_posts'] = ArticlePost.objects.filter(author__id=cur_user_id)
         context['roles'] = self.object.roles
         return context
 
+class UserProfileEdit(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = CustomUser
+    template_name = 'user_profile_edit.html'
+    fields = ['roles', 'profile_picture', 'genre', 'about']
+    
+    def get_success_url(self):
+        return reverse_lazy('user_profile', kwargs={'pk': self.object.pk})
+
+    def test_func(self): 
+        return self.get_object() == self.request.user
     
 def FollowView(request, pk):
-    user_to_follow = get_object_or_404(CustomUser, id=request.user.id)
-    user_to_follow.followers.add(request.user)
-    user_to_follow.save()
+    user_to_follow = get_object_or_404(CustomUser, id=pk)
     following = False
-    if user_to_follow.followers.filter(id=request.user.id).exists():
+    if request.user in user_to_follow.followers.all():
         user_to_follow.followers.remove(request.user)
+        user_to_follow.save()
     else:
         user_to_follow.followers.add(request.user)
         following = True
+        user_to_follow.save()
+    
     return HttpResponseRedirect(reverse('user_profile', args=[str(pk)]))
