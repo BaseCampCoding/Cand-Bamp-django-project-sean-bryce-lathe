@@ -7,7 +7,6 @@
         {% if 'artist' in artist.roles %}
         <body style="background: #7abecc;">
             <div class="card-header ml-1 mr-2 mb-3">
-                <img src="{{ artist.profile_picture.url }}" width="140">
                 <h4><a href="{% url 'user_profile' artist.pk %}">{{ artist }}</a>
             </div> 
         </body>
