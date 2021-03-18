@@ -32,7 +32,6 @@ class UserProfileDetailView(DetailView):
         cur_user_id = self.request.resolver_match.kwargs["pk"]
         found_user = CustomUser.objects.filter(id=cur_user_id).first()
         context['following'] = found_user.followers.filter(id=self.request.user.id).exists() 
-
         context['local_posts'] = ArticlePost.objects.filter(author__id=cur_user_id)
         context['roles'] = self.object.roles
         return context
