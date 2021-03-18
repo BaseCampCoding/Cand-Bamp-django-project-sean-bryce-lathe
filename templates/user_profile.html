@@ -73,26 +73,18 @@
                         </div>
                     </div>
                 {% endfor %}
-                <div class="px-2 py-3">
                     <h4 class="md-0">Song Posts</h4>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                    {% for p in Song_posts %}
-                    <div class="p-1 mb-1 bg-secondary text-white text-center">
-                        <div class="music-player">
-                            <div class="cover">
-                                <img src="{{ p.image.url }}" width="240" class="img-fluid rounded">
+                    <div class="post-grid">
+                    {% for p in Song_posts %} 
+                        <div class="songs_lis song-title song-image">
+                            <div>
+                                <img class="rounded " src="{{ p.image.url }}" width="240">
                             </div>
-                                <div class="titre">
-                                <h1 class="white"><a href="{% url 'artist_song' p.pk %}">{{p.title}}</a></h1>
-                                </div>
+                            <div class="name-links">
+                                <h1 class="song-title whiteh1"><a href="{% url 'artist_song' p.pk %}">{{p.title}}</a></h1>
                             </div>
                         </div>
-                    </div>
                     {% endfor %}
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
