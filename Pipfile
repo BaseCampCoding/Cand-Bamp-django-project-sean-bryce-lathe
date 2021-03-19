@@ -8,6 +8,9 @@ django = "~=3.1.0"
 django-crispy-forms = "==1.9.2"
 pillow = "*"
 whitenoise = "==5.2.0"
+environs = {version = "==8.0.0", extras = ["django"]}
+psycopg2-binary = "==2.8.5"
+gunicorn = "==19.9.0"
 
 [dev-packages]
 

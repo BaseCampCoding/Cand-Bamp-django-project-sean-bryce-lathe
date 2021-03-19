@@ -1,0 +1,105 @@
+*:focus{
+    outline: none;
+}
+
+body {
+    margin: 0;
+    font-family: "Raleway",sans-serif;
+}
+
+.whiteh1 {
+    margin: 6px 0 20px 0;
+    font-size: 33px;
+    color: #fff;
+    padding: 0 10%;
+}
+
+.whiteh3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 500;
+    color: #ccc;
+    padding: 0 10%;
+}
+
+.music-player {
+    display: block;
+    position: relative;
+    width: 350px;
+    height: 470px;
+    margin: auto;
+    margin-top: 2.7%;
+    border-radius: 10px 10px 10px 10px;
+    background: transparent linear-gradient(to bottom,rgba(47, 47, 51, 0.9) 50%,rgb(51, 51, 53) 70%);
+    box-shadow: 1px 10px 20px 5px;
+}
+
+.cover {
+    float: left;
+    width: 100%;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.cover .img {
+    display: flex;
+    padding: 30px 25px 12px 25px;
+    object-fit: fill; /* Do not scale the image */
+    object-position: center; /* Center the image within the element */
+    width: 100%;
+    max-height: 250px;
+    margin-bottom: .5rem;
+}
+
+.title {
+    float: left;
+    width: 100%;
+    margin-left: 10px;
+}
+
+.lecteur {
+    width: 100%;
+    display: block;
+    height: auto;
+    position: relative;
+    float: left;
+}
+
+audio {
+    width: 85%;
+}
+
+
+
+.song-title {
+    font-size: 1.9rem;
+    padding: 0.5rem 0.5rem;
+}
+
+
+.order{
+    list-style:none; margin:0px; padding:20px;
+}
+.list{
+    margin:0px; padding:0px;
+}
+.list, a{
+    transition:all 0.5s;
+}
+.list-group-item.active a{ 
+    text-decoration:none; color:#fff;
+}
+.line{
+    display:block; position:relative; width:100%;
+}
+.list a{
+    display:block; text-decoration:none;
+}
+.list:hover{
+    background-color:#333;
+}
+.list a:hover{
+    text-decoration:none; color: #fff;
+}
+/* .line{
+    color:#fff; text-decoration:none;
+} */
