@@ -7,7 +7,7 @@
         {% if 'artist' in artist.roles %}
         <body style="background: #7abecc;">
             <div class="card-header ml-1 mr-2 mb-3 rounded">
-                <h4 class="text-center"><a href="{% url 'user_profile' artist.pk %}" style ="text-decoration:none;">{{ artist }}</a>
+                <h4 class="text-center"><a href="{% url 'user_profile' artist.pk %}" style ="text-decoration:none;">{{ artist }}</a></h4>
             </div> 
         </body>
         {% endif %}
