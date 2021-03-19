@@ -46,7 +46,7 @@ body {
     object-fit: fill; /* Do not scale the image */
     object-position: center; /* Center the image within the element */
     width: 100%;
-    max-height: 250px;
+    max-height: 280px;
     margin-bottom: .5rem;
 }
 

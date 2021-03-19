@@ -14,7 +14,7 @@
                             {% if object.profile_picture %}
                                 <img src="{{ object.profile_picture.url }}" alt="..." width="140" class="rounded mb-2 img-thumbnail">
                             {% else %}
-                                <img src=" static 'images/default.png' " alt="..." width="140" class="rounded mb-2 img-thumbnail">
+                                <img src="{% static 'images/default.png' %}" alt="..." width="140" class="rounded mb-2 img-thumbnail">
                             {% endif %}
                             <a href="{% url 'user_profile_edit' object.pk %}" class="btn btn-outline-light btn-sm btn-block mb-3">Edit profile</a>
                         </div>
