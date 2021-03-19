@@ -1,24 +1,30 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="post-entry">
-        <h2 class="display-4">{{ object.title }}</h2>
-        <h4>by {{ object.author }}</h4>
-        <p>{{ object.body }}</p>
-        <h5>Genre: {{ object.genre }} </h5>
+<body style="background: #7abecc;">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="display-4">{{ object.title }}</h2>
+            <h4>by {{ object.author }}</h4>
+            <p>{{ object.body }}</p>
+            <h5>Genre: {{ object.genre }} </h5>
+        </div>
     </div>
     {% if user.is_authenticated %}
     <form action="{% url 'like_articlepost' articlepost.pk %}" method="POST">
         {% csrf_token %}
 
         {% if liked %}
-        <button type="submit" name="articlepost_id" value="{{ articlepost.id }}" class="btn btn-danger btn-sm">Unlike</button>  {{ total_likes }} Likes
+        <button type="submit" name="articlepost_id" value="{{ articlepost.id }}" class="btn btn-danger btn-sm mt-3">Unlike</button> 
+        <div class="mt-1"><span>{{ total_likes }} Likes</span></div>
         {% else %}
-        <button type="submit" name="articlepost_id" value="{{ articlepost.id }}" class="btn btn-primary btn-sm">Like</button>  {{ total_likes }} Likes
+        <button type="submit" name="articlepost_id" value="{{ articlepost.id }}" class="btn btn-primary btn-sm mt-3">Like</button>  
+        <div class="mt-1"><span>{{ total_likes }} Likes</span></div>
         {% endif %}
     </form>
 {% else %}
     <p><a href="{% url 'login' %}">Login</a> to like this post</p>
     <a href="{% url 'home' %}" class="btn btn-secondary">Back to Homepage</a>
+</body>
 {% endif %}
 {% endblock content %}

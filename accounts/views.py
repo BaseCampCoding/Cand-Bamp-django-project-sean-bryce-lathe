@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import ListView, DetailView
+from django.contrib.auth import get_user_model
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
@@ -22,7 +23,7 @@ class ArtistListView(ListView):
     context_object_name = 'all_user_list'
 
 class UserProfileDetailView(DetailView):
-    model = CustomUser
+    model = get_user_model()
     template_name = 'user_profile.html'
     # context_object_name = 'user_roles'
 
@@ -35,12 +36,19 @@ class UserProfileDetailView(DetailView):
         context['following'] = found_user.followers.filter(id=self.request.user.id).exists() 
         context['local_posts'] = ArticlePost.objects.filter(author__id=cur_user_id)
         context['roles'] = self.object.roles
+        context['local_posts_count'] = context['local_posts'].count()
+        context['Song_posts_count'] = context['Song_posts'].count()
         return context
 
 class UserProfileEdit(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = CustomUser
     template_name = 'user_profile_edit.html'
     fields = ['roles', 'profile_picture', 'genre', 'about']
+
+    def form_valid(self, form):
+        form.instance.artist = self.request.user
+        form.save()
+        return super().form_valid(form)
     
     def get_success_url(self):
         return reverse_lazy('user_profile', kwargs={'pk': self.object.pk})

@@ -47,7 +47,7 @@
     <div class="col-sm-6">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">New Artists</h5>
+          <h5 class="card-title" style="font-weight: bold;">New Artists</h5>
           <p class="card-text">Check out the newest musicians on our platform</p>
           <a href="{% url 'artist_list' %}" class="btn btn-primary">Artists</a>
         </div>
@@ -56,7 +56,7 @@
     <div class="col-sm-6">
       <div class="card">
         <div class="card-body">
-            <h5 class="card-title">New Articles</h5>
+            <h5 class="card-title" style="font-weight: bold;">New Articles</h5>
             <p class="card-text">Read some articles from the Cand Bamp community</p>
             <a href="{% url 'article_list' %}" class="btn btn-primary">Articles</a>
         </div>
@@ -64,13 +64,13 @@
     </div>
   </div>
   <div class="py-5">
-    <div class="card" style="width: 18rem;">
+    <div class=" card span text-center mx-auto" >
       <div class="card-header">
-        List User
+        <h3 style="font-weight: bold;">Here's a few of our favorites</h3>
       </div>
       <ul class="list-group list-group-flush pre-scrollable">
         {% for user in object_list %}
-        <li class="list-group-item"><a href="{% url 'user_profile' user.id %}">{{ user.username }}</a></li>
+        <li class="list-group-item"><a href="{% url 'user_profile' user.id %}" style="text-decoration:none;">{{ user.username }}</a></li>
         {% endfor %} 
       </ul>
     </div>
