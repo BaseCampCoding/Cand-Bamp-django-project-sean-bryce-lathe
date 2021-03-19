@@ -35,6 +35,9 @@ class UserProfileDetailView(DetailView):
         context['following'] = found_user.followers.filter(id=self.request.user.id).exists() 
         context['local_posts'] = ArticlePost.objects.filter(author__id=cur_user_id)
         context['roles'] = self.object.roles
+        context['local_posts_count'] = context['local_posts'].count()
+        context['Song_posts_count'] = context['Song_posts'].count()
+        print(context['Song_posts_count'] = context['Song_posts'].count())
         return context
 
 class UserProfileEdit(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
