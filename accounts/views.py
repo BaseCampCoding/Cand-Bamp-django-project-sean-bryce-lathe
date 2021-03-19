@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import ListView, DetailView
+from django.contrib.auth import get_user_model
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
@@ -22,7 +23,7 @@ class ArtistListView(ListView):
     context_object_name = 'all_user_list'
 
 class UserProfileDetailView(DetailView):
-    model = CustomUser
+    model = get_user_model()
     template_name = 'user_profile.html'
     # context_object_name = 'user_roles'
 
