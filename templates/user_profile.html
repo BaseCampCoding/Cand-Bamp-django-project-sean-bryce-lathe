@@ -12,7 +12,7 @@
                     <div class="media align-items-end profile-head">
                         <div class="profile mr-3">
                             {% if object.profile_picture %}
-                                <img src="{{ object.profile_picture.url }}" alt="..." width="140" class="rounded mb-2 img-thumbnail">
+                                <img src="{{ object.profile_picture.url }}" alt="..." width="140" class="rounded mb-3 img-thumbnail">
                             {% endif %}
                             <a href="{% url 'user_profile_edit' object.pk %}" class="btn btn-outline-light btn-sm btn-block">Edit profile</a>
                         </div>
